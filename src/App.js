@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Gallery from "./components/Gallery";
+
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+
+import reducers from "./reducers";
+
+import rootSaga from "./sagas";
+
+import logger from "redux-logger";
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, applyMiddleware(sagaMiddleware, logger));
+sagaMiddleware.run(rootSaga);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Gallery />
+      </Provider>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,15 @@
+.heading {
+  font-size: 36px;
+  width: 100%;
+  padding: 10px;
+  font-family: "Sofia";
+  font-weight: 200;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.gallery {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #eee;
+}
