@@ -1,9 +1,9 @@
 import { IMAGES } from "../constants";
 
-const imageReducer = (state = [], action) => {
+const pageNumberReducer = (state = 1, action) => {
   switch (action.type) {
     case IMAGES.LOAD_SUCCESS:
-      const newState = [...state, ...action.payload];
+      const newState = state + 1;
       return newState;
 
     default:
@@ -11,4 +11,4 @@ const imageReducer = (state = [], action) => {
   }
 };
 
-export default imageReducer;
+export default pageNumberReducer;

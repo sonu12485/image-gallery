@@ -1,5 +1,9 @@
+import { all } from "redux-saga/effects";
+
+import imagesSaga from "./imagesSaga";
+
 function* rootSaga() {
-  yield console.log("root saga running");
+  yield all([imagesSaga()]);
 }
 
 export default rootSaga;
