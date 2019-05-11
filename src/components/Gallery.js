@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Gallery.css";
 
-import { Button, Segment } from "semantic-ui-react";
+import { Button, Segment, Label } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
@@ -25,7 +25,24 @@ class Gallery extends Component {
                   className={`item item-${Math.ceil(
                     image.height / image.width
                   )}`}
+                  style={{
+                    position: "relative"
+                  }}
                 >
+                  {this.props.stats && (
+                    <Label
+                      tag
+                      color="blue"
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px"
+                      }}
+                    >
+                      Downloads
+                      <Label.Detail>{this.props.stats[image.id]}</Label.Detail>
+                    </Label>
+                  )}
                   <img src={image.urls.small} alt={image.description} />
                 </div>
               ))}
@@ -57,7 +74,8 @@ const mapStateToProps = state => {
   return {
     images: state.images,
     loading: state.images_loading,
-    error: state.images_error
+    error: state.images_error,
+    stats: state.stats
   };
 };
 

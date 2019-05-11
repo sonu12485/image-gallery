@@ -2,10 +2,12 @@ import axios from "axios";
 
 import { URL, KEY } from "../constants";
 
-const fetchImages = async pageNumber => {
+const fetchStats = async id => {
   const res = await axios.get(
-    `${URL}/photos?client_id=${KEY}&page=${pageNumber}&per_page=5`
+    `${URL}/photos/${id}/statistics?client_id=${KEY}`
   );
+
+  console.log(res);
 
   if (res.status >= 400) {
     throw new Error(res.error);
@@ -14,4 +16,4 @@ const fetchImages = async pageNumber => {
   }
 };
 
-export default fetchImages;
+export default fetchStats;

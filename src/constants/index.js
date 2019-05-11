@@ -4,4 +4,11 @@ const IMAGES = {
   LOAD_FAIL: "IMAGES_LOAD_FAIL"
 };
 
-export { IMAGES };
+const STATS = {
+  LOADED: "STATS_LOADED"
+};
+
+const URL = "https://api.unsplash.com";
+const KEY = process.env.API_KEY;
+
+export { IMAGES, STATS, URL, KEY };
